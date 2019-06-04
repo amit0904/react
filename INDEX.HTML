@@ -26,19 +26,23 @@
     return `<div class="item">
     <div class="ui checkbox">
     <input type="checkbox">
-    <label>${item}</label>
+    <label>${item.value}</label>
     </div>
     </div>`;
   }
   const list = document.getElementById("list");
   const toDoInput = document.getElementById("to_do_input");
   const commitToDo = document.getElementById("commit_to_do");
+  const listitems = [];
   function commitClickHandle(event) {
     console.dir(toDoInput);
     const value = toDoInput.value;
+    listitems.push({value , checked:false});
+    console.dir(listitems);
     //list.innerHTML = `${list.innerHTML}<li>${value}</li>`;
-    list.innerHTML = `${list.innerHTML}${toDoCheckBox(value)}`;
+    list.innerHTML = listitems.map(toDoCheckBox).join('');
   }
   commitToDo.addEventListener("click", commitClickHandle);
+  document.getElementsByClassName("todocheckbox").addEventListener("click",(e)=>console.dir(e));
 </script>
 </hmtl>
